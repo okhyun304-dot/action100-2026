@@ -139,9 +139,17 @@
 
   /* ── 6년의 변화 ─────────────────────── */
   .era{display:grid;gap:10px;margin:6px 0 0}
-  .era div{
+  .era > div{
     background:var(--bg-2);border:1px solid var(--line);
-    border-radius:12px;padding:16px 18px;
+    border-radius:12px;overflow:hidden;
+  }
+  .era .era-b{padding:14px 18px 16px}
+  .era-img{margin:0;position:relative;background:#000;border-bottom:1px solid var(--line)}
+  .era-img img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+  .era-img figcaption{
+    position:absolute;right:8px;top:8px;
+    font-size:11px;font-weight:600;color:#fff;
+    background:rgba(0,0,0,.66);padding:2px 7px;border-radius:4px;
   }
   .era div.now{border-color:var(--accent);background:var(--accent-soft)}
   .era .y{display:block;font-size:11.5px;font-weight:800;letter-spacing:.12em;color:var(--accent);margin-bottom:4px}
@@ -391,9 +399,18 @@
     <h2>의지에서 시스템으로,<br>시스템에서 AI로.</h2>
 
     <div class="era">
-      <div><span class="y">2020 —</span><h3>의지</h3><p>같이 일어나고, 같이 읽었다.</p></div>
-      <div><span class="y">2022 —</span><h3>시스템</h3><p>100일 오디션, 방, 매주 복기. 의지가 필요 없게 만들었다.</p></div>
-      <div class="now"><span class="y">2026 —</span><h3>AI</h3><p>쌓인 강의와 기록을 AI로 다시 꺼내 판단에 쓴다.</p></div>
+      <div>
+        <figure class="era-img"><img src="images/era-2020.jpg" alt="2020년 명상원정대 공지. 매일 오전 5시 10분부터 5시 20분, 각자 집에서" loading="lazy" style="object-position:50% 92%"><figcaption>명상원정대 공지 · 2020.12</figcaption></figure>
+        <div class="era-b"><span class="y">2020 —</span><h3>의지</h3><p>같이 일어나고, 같이 읽었다.</p></div>
+      </div>
+      <div>
+        <figure class="era-img"><img src="images/era-2022.jpg" alt="매주 화상으로 모여 복기하는 BMW 모임 화면. 얼굴과 이름은 흐리게 가렸다" loading="lazy" style="object-position:50% 30%"><figcaption>BMW 화상 복기 · 2025.04</figcaption></figure>
+        <div class="era-b"><span class="y">2022 —</span><h3>시스템</h3><p>100일 오디션, 방, 매주 복기. 의지가 필요 없게 만들었다.</p></div>
+      </div>
+      <div class="now">
+        <figure class="era-img"><img src="images/era-2026.jpg" alt="행동주의자 강의실 화면. 강의를 영상으로 다시 만들어 채널별로 본다" loading="lazy" style="object-position:0 0"><figcaption>행동주의자 강의실 · 2026</figcaption></figure>
+        <div class="era-b"><span class="y">2026 —</span><h3>AI</h3><p>쌓인 강의와 기록을 AI로 다시 꺼내 판단에 쓴다.</p></div>
+      </div>
     </div>
 
     <div class="pull big">도구는 이제 누구나 쓴다.<br>차이는 그 도구에 무엇을 넣느냐다.<br>여기서는 6년 치 행동을 넣는다.</div>
