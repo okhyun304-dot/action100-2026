@@ -295,13 +295,13 @@
     padding:62px 0 70px;
   }
   .cta .q{font-size:18px;font-weight:800;color:var(--fg);line-height:1.65;letter-spacing:-.03em;margin-bottom:18px;text-align:center}
-  .cta .intro{text-align:center;margin-bottom:28px}
-  .status{border:1px solid var(--line);border-radius:14px;background:var(--bg);margin-bottom:26px}
-  .status div{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:14px 18px;border-top:1px solid var(--line)}
-  .status div:first-child{border-top:none}
-  .status dt{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--accent);padding-top:2px}
-  .status dd{font-size:15px;color:var(--fg-2);line-height:1.62}
-  .status dd b{color:var(--fg)}
+  .cta .intro{text-align:center;margin-bottom:0}
+  .cta .vow{
+    text-align:center;margin:30px auto;max-width:420px;
+    padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    font-size:19px;font-weight:800;color:var(--fg);letter-spacing:-.035em;line-height:1.55;
+  }
+  .cta .ask{text-align:center;margin-bottom:26px}
   .btn{
     display:block;width:100%;text-align:center;
     padding:17px 20px;border-radius:12px;
@@ -311,7 +311,6 @@
   }
   .btn:active{transform:scale(.985)}
   .btn-primary{background:var(--accent);color:#fff}
-  .btn-secondary{background:transparent;color:var(--fg);border:1px solid var(--line)}
   .btn small{display:block;font-size:12.5px;font-weight:500;opacity:.72;margin-top:2px}
   .last{
     margin-top:22px;font-size:14.5px;color:var(--fg-3);
@@ -699,20 +698,12 @@
     <p class="q">1년 전의 나와 지금의 나는 얼마나 다른가.<br>지금부터 1년 뒤는 어떻게 될 것 같나.</p>
     <p class="intro">모집글은 없다. 영업도 없다. 다만 선언이 있다.</p>
 
-    <dl class="status">
-      <div><dt>운영</dt><dd>2020년 10월부터 <b>지금도 돌아간다.</b></dd></div>
-      <div><dt>모집</dt><dd>조만간 연다. 언제인지는 모른다. 미리 문의 남겨두시기 바람.</dd></div>
-      <div><dt>참여비</dt><dd>유료다. <span class="nw">금액은 문의하면 안내한다.</span></dd></div>
-      <div><dt>문의</dt><dd><span class="nw">지금 하는 일과 이루고 싶은 것을 카카오톡으로 남겨라.</span> 궁금한 게 있으면 블로그 글에 댓글을 달아라. 내가 직접 본다.</dd></div>
-    </dl>
+    <p class="vow"><span class="nw">100일은 누군가 대신 바꿔주는 시간이 아니다.</span></p>
+
+    <p class="ask"><span class="nw">여기까지 읽고도 해보고 싶다면,<br>지금 무엇을 하고 있고 무엇을 바꾸고 싶은지 남겨라.</span></p>
 
     <a class="btn btn-primary" href="https://open.kakao.com/o/s5lMmFzc" target="_blank" rel="noopener">
-      카카오톡으로 1:1 문의
-      <small>오픈채팅</small>
-    </a>
-    <a class="btn btn-secondary" href="https://blog.naver.com/guraud22/222099927754" target="_blank" rel="noopener">
-      블로그에 댓글 남기기
-      <small>행동주의자 네이버 블로그</small>
+      행동주의자에게 이야기 남기기
     </a>
   </div>
 </section>
