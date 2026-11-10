@@ -296,15 +296,67 @@
   .era p{font-size:14.5px;margin:0}
   @media (min-width:640px){.era{grid-template-columns:repeat(3,1fr)}}
 
-  .class-link{
-    display:block;margin-top:28px;text-decoration:none;
-    background:var(--bg-2);border:1px solid var(--accent);
-    border-radius:12px;padding:18px 20px;
-    transition:transform .12s ease;
+  /* ── 강의실 미리보기 ─────────────────── */
+  .cls{border:1px solid var(--line);border-radius:14px;background:#0e0e10;overflow:hidden}
+  .cls-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .cls-top b{font-size:16px;font-weight:800;letter-spacing:-.03em}
+  .cls-top b span{color:var(--accent)}
+  .cls-top small{font-size:12px;color:var(--fg-3)}
+  .cls-tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 16px 4px;scrollbar-width:none}
+  .cls-tabs::-webkit-scrollbar{display:none}
+  .cls-tab{
+    flex-shrink:0;font:inherit;font-size:13px;font-weight:600;color:var(--fg-2);
+    background:var(--bg-2);border:1px solid var(--line);border-radius:999px;
+    padding:6px 12px;cursor:pointer;
   }
-  .class-link:active{transform:scale(.985)}
-  .class-link b{display:block;font-size:16.5px;font-weight:800;color:var(--fg);letter-spacing:-.025em}
-  .class-link span{display:block;font-size:13.5px;color:var(--fg-2);margin-top:4px}
+  .cls-tab i{font-style:normal;color:var(--fg-3);margin-left:4px;font-weight:500}
+  .cls-tab[aria-selected="true"]{background:var(--fg);color:#111;border-color:var(--fg)}
+  .cls-tab[aria-selected="true"] i{color:#555}
+  .cls-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 16px 0;font-size:12px;color:var(--fg-3)}
+  .cls-meta b{color:var(--accent)}
+  .cls-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px 16px 16px}
+  @media (min-width:640px){.cls-grid{grid-template-columns:repeat(3,1fr)}}
+  .cc{
+    display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;
+    background:var(--bg-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:0;
+  }
+  .cc:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cc .th{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#000}
+  .cc .th img{display:block;width:100%;height:100%;object-fit:cover}
+  .cc .dur{position:absolute;right:6px;bottom:6px;font-size:10.5px;font-weight:700;background:rgba(0,0,0,.75);color:#fff;padding:1px 5px;border-radius:4px}
+  .cc .ct{display:block;padding:8px 10px 10px}
+  .cc .ct b{display:block;font-size:12.5px;font-weight:700;line-height:1.4;color:var(--fg);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cc .ct small{display:block;font-size:11px;color:var(--fg-3);margin-top:3px;line-height:1.4;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cc.open{border-color:var(--accent)}
+  .cc .badge{position:absolute;left:6px;top:6px;font-size:10px;font-weight:800;letter-spacing:.04em;background:var(--accent);color:#fff;padding:2px 6px;border-radius:4px}
+  .cc .play{position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:rgba(226,64,42,.92);display:flex;align-items:center;justify-content:center}
+  .cc .play svg{width:16px;height:16px;fill:#fff;margin-left:2px}
+  .cc.locked .th img{filter:blur(5px) brightness(.38) saturate(.6);transform:scale(1.08)}
+  .cc.locked .lk{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#fff}
+  .cc.locked .lk svg{width:22px;height:22px;fill:currentColor;opacity:.92}
+  .cc.locked .lk span{font-size:10.5px;font-weight:700;letter-spacing:.06em;opacity:.8}
+  .cc.locked .ct b{color:var(--fg-2)}
+  .cc.rest .th{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:repeating-linear-gradient(135deg,#141416 0 10px,#18181b 10px 20px);color:var(--fg-2)}
+  .cc.rest .th svg{width:22px;height:22px;fill:var(--fg-3)}
+  .cc.rest .th strong{font-size:15px;font-weight:800;color:var(--fg)}
+  .cls-more{display:flex;align-items:center;gap:8px;padding:12px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--fg-3);line-height:1.5}
+  .cls-more svg{width:14px;height:14px;fill:var(--fg-3);flex-shrink:0}
+
+  .cls-modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:16px}
+  .cls-modal[hidden]{display:none}
+  .cls-dialog{position:relative;width:100%;max-width:720px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .cls-dialog video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+  .cls-dialog .cap{padding:12px 16px 16px;font-size:13px;color:var(--fg-3)}
+  .cls-dialog .cap b{display:block;font-size:15.5px;color:var(--fg);margin-bottom:2px}
+  .cls-x{position:absolute;right:8px;top:8px;z-index:2;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+  .cls-lock{padding:34px 22px 24px;text-align:center}
+  .cls-lock svg{width:34px;height:34px;fill:var(--accent);margin-bottom:12px}
+  .cls-lock h3{font-size:18px;margin-bottom:8px}
+  .cls-lock .t{font-size:13.5px;color:var(--fg-3);margin-bottom:6px}
+  .cls-lock p{font-size:14.5px;margin-bottom:20px}
+  .cls-lock .btn{margin:0 auto}
 
   footer{padding:28px 0 44px;text-align:center;font-size:12.5px;color:var(--fg-3);line-height:1.9}
   footer a{color:var(--fg-3)}
@@ -333,7 +385,7 @@
     <div class="stats">
       <div><span class="n">6년</span><span class="l">끊기지 않은 기간</span></div>
       <div><span class="n">12개</span><span class="l">운영 중인 방</span></div>
-      <div><span class="n">95강</span><span class="l">AI로 만든 대장님 강의</span></div>
+      <div><span class="n">98%</span><span class="l">실행률</span></div>
     </div>
   </div>
 </section>
@@ -400,10 +452,6 @@
         <li>읽은 걸 자기 현실과 사업에 붙이는 훈련을 한다.</li>
       </ul>
       <p class="kicker">책은 읽는 게 아니라 하는 거다.</p>
-      <figure class="clip">
-        <video controls playsinline preload="none" poster="thumbs/드릴론.jpg" src="https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EA%B0%95%EC%9D%98%EC%98%81%EC%83%81_%EB%93%9C%EB%A6%B4%EB%A1%A0_16x9.mp4"></video>
-        <figcaption><span class="lab">대장님 강의 · 3:43</span><b>드릴론</b>행동주의자 3강 · 얕게 여러 번이 아니라, 깊게 한 번</figcaption>
-      </figure>
     </div>
 
     <div class="note">
@@ -525,10 +573,6 @@
         <img src="images/room-06-bmw.jpg" alt="BMW 주간 복기 화면" loading="lazy">
         <figcaption>BMW · 참가자 26명 · 매주 목표와 결과를 복기한다</figcaption>
       </figure>
-      <figure class="clip">
-        <video controls playsinline preload="none" poster="thumbs/실패.jpg" src="https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EA%B0%95%EC%9D%98%EC%98%81%EC%83%81_%EC%8B%A4%ED%8C%A8_260914.mp4"></video>
-        <figcaption><span class="lab">대장님 강의 · 4:55</span><b>실패는 정보다</b>행동주의자 11강 · 성공하면 수익, 실패하면 정보</figcaption>
-      </figure>
     </div>
 
     <p style="margin-top:34px;font-size:15px">이 외에도 이런 방들이 돌아간다.</p>
@@ -577,7 +621,7 @@
         <li>사고, 마케팅, 음악 낭독, 영화·게임 해석, 현장 학습만화까지.</li>
         <li>멤버는 듣고 끝내지 않고, 필요할 때 다시 꺼내 본다.</li>
       </ul>
-      <p class="why">이 페이지에 붙은 영상이 전부 그 강의실에서 가져온 것이다.</p>
+      <p class="why">이 페이지에 붙은 영상이 전부 그 강의실에서 가져온 것이다. 강의실은 아래에서 미리 볼 수 있다.</p>
     </div>
 
     <div class="fn">
@@ -606,17 +650,35 @@
       <video controls playsinline preload="none" poster="thumbs/마음의이동수단.jpg" src="https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EA%B0%95%EC%9D%98%EC%98%81%EC%83%81_%EB%A7%88%EC%9D%8C%EC%9D%98%EC%9D%B4%EB%8F%99%EC%88%98%EB%8B%A8_260914.mp4"></video>
       <figcaption><span class="lab">대장님 강의 · 6:17</span><b>AI는 생산성 도구가 아니라 마음의 이동수단이다</b>행동주의자 14강 · 몸이 아니라 생각이 움직이는 여행</figcaption>
     </figure>
-    <figure class="clip">
-      <video controls playsinline preload="none" poster="thumbs/늦었다.jpg" src="https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EA%B0%95%EC%9D%98%EC%98%81%EC%83%81_%EB%8A%A6%EC%97%88%EB%8B%A4_260913.mp4"></video>
-      <figcaption><span class="lab">대장님 강의 · 6:29</span><b>늦었다고 생각할 때 이미 늦어있습니다</b>행동주의자 13강 · 도구는 민주화됐지만, 사고는 아니다</figcaption>
-    </figure>
-
-    <a class="class-link" href="https://okhyun304-dot.github.io/action-class/" target="_blank" rel="noopener">
-      <b>행동주의자 강의실 둘러보기 →</b>
-      <span>대장님 강의 95편 · 쇼츠 75편</span>
-    </a>
   </div>
 </section>
+
+<!-- ══════════ 강의실 미리보기 (2026 신규) ══════════ -->
+<section id="class-preview">
+  <div class="wrap">
+    <span class="eyebrow">강의실 미리보기</span>
+    <h2>멤버는 이 강의실에서<br>대장님 강의를 다시 본다.</h2>
+    <p class="lead" style="margin-bottom:24px">강의 95편, 쇼츠 75편. <strong>밖에는 4편만 연다.</strong> 나머지는 멤버 전용이다.</p>
+
+    <div class="cls">
+      <div class="cls-top"><b>행동<span>주의자</span> 강의실</b><small>판서로 배우는 생각의 도구</small></div>
+      <div class="cls-tabs" id="clsTabs" role="tablist" aria-label="강의 채널"></div>
+      <div class="cls-meta"><span id="clsCount"></span><span>전체 95강 중 <b>4강</b> 외부 공개</span></div>
+      <div class="cls-grid" id="clsGrid"></div>
+      <div class="cls-more">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1zm2 0h6V7a3 3 0 0 0-6 0v3z"/></svg>
+        그 밖에 쇼츠 75편 · BMW 인터랙티브 강의 · 행동지식 강의실 — 모두 멤버 전용
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cls-modal" id="clsModal" hidden>
+  <div class="cls-dialog" role="dialog" aria-modal="true" aria-labelledby="clsModalTitle">
+    <button class="cls-x" type="button" aria-label="닫기" data-close>×</button>
+    <div id="clsModalBody"></div>
+  </div>
+</div>
 
 <!-- ══════════ 차별점 ══════════ -->
 <section>
@@ -746,20 +808,8 @@
   </div>
 </section>
 
-<!-- ══════════ 마지막 한 마디 ══════════ -->
-<section>
-  <div class="wrap">
-    <span class="eyebrow">마지막으로</span>
-    <h2>나를 믿지 말고,<br>내 행동을 따라 해본<br>당신을 믿어라.</h2>
-    <figure class="clip">
-      <video controls playsinline preload="none" poster="thumbs/앞만보고.jpg" src="https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EB%82%AD%EB%8F%85%EC%98%81%EC%83%81_%EC%95%9E%EB%A7%8C%EB%B3%B4%EA%B3%A0_260922.mp4"></video>
-      <figcaption><span class="lab">대장님 낭독 · 4:45</span><b>앞만 보고 가다보니</b>The Quiett 〈My Last Song〉 위에 얹은 낭독</figcaption>
-    </figure>
-  </div>
-</section>
-
 <!-- ══════════ CTA ══════════ -->
-<section class="cta">
+<section class="cta" id="cta">
   <div class="wrap">
     <span class="eyebrow">문의</span>
     <p class="q">1년 전의 나와 지금의 나는 얼마나 다른가.<br>지금부터 1년 뒤는 어떻게 될 것 같나.</p>
@@ -794,5 +844,81 @@
   </div>
 </footer>
 
+<script>
+const CLASS=[{"c":"행동주의자","n":1,"u":"강","t":"생각할 틈","s":"생각할 틈이 없는 사람은 같은 인생을 반복한다","d":"6:02","th":"thumbs/생각할틈.jpg"},{"c":"행동주의자","n":2,"u":"강","t":"인간 본성","s":"사업 공부의 시작은 인간 이해","d":"5:28","th":"thumbs/인간본성.jpg"},{"c":"행동주의자","n":3,"u":"강","t":"드릴론","s":"얕게 여러 번이 아니라, 깊게 한 번","d":"3:43","th":"thumbs/드릴론.jpg"},{"c":"행동주의자","n":4,"u":"강","t":"기울기론","s":"위치가 아니라 기울기가 미래를 결정한다","d":"6:00","th":"thumbs/기울기.jpg"},{"c":"행동주의자","n":5,"u":"강","t":"게임점","s":"책은 문장으로, 게임은 상황으로 생각하게 한다","d":"6:25","th":"thumbs/게임점.jpg"},{"c":"행동주의자","n":6,"u":"강","t":"감정보다 서사","s":"『나를 지키는 감정, 나를 살리는 감정』을 읽는 이유","d":"6:13","th":"thumbs/감정서사.jpg"},{"c":"행동주의자","n":7,"u":"강","t":"이너게임과 사업","s":"성과 = 잠재력 - 간섭","d":"6:09","th":"thumbs/이너게임.jpg"},{"c":"행동주의자","n":8,"u":"강","t":"잠은 신뢰다","s":"의식이 퇴근하면, 몸이 야간작업을 시작한다","d":"2:00","th":"thumbs/잠.jpg"},{"c":"행동주의자","n":9,"u":"강","t":"종이와 펜","s":"생각이 도망가기 전에 한 번 붙잡는다","d":"1:20","th":"thumbs/종이.jpg"},{"c":"행동주의자","n":10,"u":"강","t":"오픈월드","s":"길을 벗어나야 다음 퀘스트가 열린다","d":"5:43","th":"thumbs/오픈월드.jpg"},{"c":"행동주의자","n":11,"u":"강","t":"실패는 정보다","s":"성공하면 수익, 실패하면 정보","d":"4:55","th":"thumbs/실패.jpg"},{"c":"행동주의자","n":12,"u":"강","t":"조인트 사업의 실제 가치","s":"낮은 비용으로 받은 사업의 옵션","d":"2:56","th":"thumbs/조인트사업.jpg"},{"c":"행동주의자","n":13,"u":"강","t":"늦었다고 생각할 때 이미 늦어있습니다","s":"도구는 민주화됐지만, 사고는 아니다 — 사고의 복리","d":"6:29","th":"thumbs/늦었다.jpg"},{"c":"행동주의자","n":14,"u":"강","t":"AI는 생산성 도구가 아니라 마음의 이동수단이다","s":"몸이 아니라 생각이 움직이는 여행 — 사유의 이동성","d":"6:17","th":"thumbs/마음의이동수단.jpg","src":"https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EA%B0%95%EC%9D%98%EC%98%81%EC%83%81_%EB%A7%88%EC%9D%8C%EC%9D%98%EC%9D%B4%EB%8F%99%EC%88%98%EB%8B%A8_260914.mp4"},{"c":"행동주의자","n":15,"u":"강","t":"어느 곳에서도 다시 움직일 수 있는 사람","s":"위치가 아니라 이동성 — 선택권의 축적","d":"3:28","th":"thumbs/이동성.jpg"},{"c":"행동주의자","n":16,"u":"강","t":"관계는 출석률이다","s":"감정의 강도가 아니라, 필요한 순간에 나타나는 것","d":"4:18","th":"thumbs/관계.jpg"},{"c":"행동주의자","n":17,"u":"강","t":"현실 습관 — 왜 첫 번째인가","s":"현실을 잘못 보면, 열심히 할수록 멀어진다","d":"4:59","th":"thumbs/현실습관.jpg"},{"c":"행동주의자","n":18,"u":"강","t":"오스본 9가지 질문으로 프레임 깨기","s":"아이디어가 없는 게 아니라, 질문이 반복되고 있는 겁니다","d":"5:22","th":"thumbs/오스본.jpg"},{"c":"행동주의자","n":19,"u":"강","t":"고객은 상품보다 먼저 당신을 의심합니다","s":"불신의 벽을 넘는 다섯 단계","d":"9:30","th":"thumbs/불신의벽.jpg"},{"c":"행동주의자","n":20,"u":"강","t":"그 문제, 정말 풀어야 합니까?","s":"문제해결보다 먼저, 문제정의","d":"5:06","th":"thumbs/문제정의.jpg"},{"c":"마케팅주의자","n":1,"u":"강","t":"마케팅의 구조","s":"모객 → 잠재고객 팔로우 → 판매 → 고객화","d":"8:46","th":"thumbs/마케팅구조.jpg"},{"c":"마케팅주의자","n":2,"u":"강","t":"판매의 순서","s":"고객의 마음이 움직이는 8단계","d":"5:45","th":"thumbs/판매순서.jpg"},{"c":"마케팅주의자","n":3,"u":"강","t":"사람들이 영업을 싫어하는 진짜 이유","s":"영업의 시작은 설명이 아니라 이해","d":"4:09","th":"thumbs/영업.jpg"},{"c":"마케팅주의자","n":4,"u":"강","t":"고객은 상품이 아니라 변화를 삽니다","s":"드릴도, 구멍도 아니고 그 이후의 삶의 모습","d":"5:41","th":"thumbs/변화.jpg"},{"c":"마케팅주의자","n":5,"u":"강","t":"마케팅 채널을 늘리는데 왜 매출은 그대로일까?","s":"채널의 게임이 아니라 흐름의 게임","d":"3:05","th":"thumbs/흐름.jpg"},{"c":"마케팅주의자","n":6,"u":"강","t":"고객은 설득당해서 사는 게 아닙니다","s":"설명을 늘리는 대신 판단 기준을 준다","d":"2:54","th":"thumbs/판단기준.jpg"},{"c":"마케팅주의자","n":7,"u":"강","t":"고객은 처음부터 당신의 상품을 찾지 않습니다","s":"상품의 언어가 아니라 고객의 언어로","d":"4:08","th":"thumbs/고객의언어.jpg"},{"c":"마케팅주의자","n":8,"u":"강","t":"고객의 말을 그대로 믿으면 안 되는 이유","s":"행동 · 의도 · 기능으로 한 번 더 들어간다","d":"5:47","th":"thumbs/행동의도기능.jpg"},{"c":"음악","n":1,"u":"곡","t":"인생의 겨울","s":"겨울의 판단은 겨울의 시야를 반영할 뿐","d":"3:18","th":"thumbs/인생의겨울.jpg"},{"c":"음악","n":2,"u":"곡","t":"시절인연","s":"인연도 노력이라는 물을 주면 가꿀 수 있다","d":"4:40","th":"thumbs/시절인연.jpg"},{"c":"음악","n":3,"u":"곡","t":"열정은 자아입니다","s":"열정은 태우고, 냉정한 끈기는 만든다","d":"2:54","th":"thumbs/열정.jpg"},{"c":"음악","n":4,"u":"곡","t":"오늘날 우리는 너무 많은 말을 합니다","s":"침묵과 고통이 진리에 이르는 길 — 시몬 바일","d":"6:14","th":"thumbs/침묵.jpg"},{"c":"음악","n":5,"u":"곡","t":"사람이 죽을 것 같을 때야말로 죽지는 않는다","s":"코로나, 필리핀, 디오씨 블루스 — 대장님의 회고","d":"5:13","th":"thumbs/죽지않는다.jpg","src":"https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EB%82%AD%EB%8F%85%EC%98%81%EC%83%81_%EC%A3%BD%EC%A7%80%EC%95%8A%EB%8A%94%EB%8B%A4_260918.mp4"},{"c":"음악","n":6,"u":"곡","t":"아픈 것은 대신해 줄 수 없다","s":"신해철 〈단 하나의 약속〉 위에 얹은 낭독 — 대신 아파줄 수 없어서 사랑을 안다","d":"4:18","th":"thumbs/아프지말아요.jpg"},{"c":"음악","n":7,"u":"곡","t":"새벽의 여의도는 차갑다","s":"마야 〈나를 외치다〉 위에 얹은 낭독 — 아무도 없는 새벽에 일어나던 날들은 결국 나로 인해 증명되었다","d":"4:31","th":"thumbs/새벽의여의도.jpg"},{"c":"음악","n":8,"u":"곡","t":"사랑","s":"Kevon 〈Love Will Be Waiting〉 위에 얹은 낭독 — 지루함이 클래식이 되는 것, 그것이 세련된 사랑","d":"4:14","th":"thumbs/사랑.jpg"},{"c":"행동주의자","n":21,"u":"강","t":"시계가 끝내는 경기인가, 내가 끝내야 끝나는 경기인가","s":"판을 잘못 읽으면 전략도 틀린다","d":"5:18","th":"thumbs/시계와점수.jpg"},{"c":"행동주의자","n":22,"u":"강","t":"계획된 우연은 익숙한 세계 밖에서 생깁니다","s":"환경을 바꾸면 우연의 종류가 바뀐다","d":"4:32","th":"thumbs/계획된우연.jpg"},{"c":"행동주의자","n":23,"u":"강","t":"잠을 줄였다면 왜 줄였는지 알고 있어야 합니다","s":"비용을 알고 고르는 것, 그게 선택이다","d":"4:28","th":"thumbs/수면.jpg","src":"https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EA%B0%95%EC%9D%98%EC%98%81%EC%83%81_%EC%88%98%EB%A9%B4_261016.mp4"},{"c":"음악","n":9,"u":"곡","t":"인생에는 왕복이 없습니다","s":"Edith Rossetti 〈De Ida y Vuelta〉 — 돌아갈 곳이 있다는 것","d":"3:05","th":"thumbs/왕복.jpg"},{"c":"음악","n":10,"u":"곡","t":"오늘 할 말은 오늘 해야 합니다","s":"god 〈다시〉 평론 — 사랑에 실패한 게 아니라 타이밍에 실패한 사람","d":"6:25","th":"thumbs/다시.jpg"},{"c":"음악","n":11,"u":"곡","t":"끝을 알아도 우리는 사랑할 수 있을까","s":"포지션 〈하루〉 평론 — 왜 떠났는가가 아니라, 끝을 알았어도 사랑했을 것인가","d":"5:19","th":"thumbs/하루.jpg"},{"c":"음악","n":12,"u":"곡","t":"강한 게 아니라, 강해야 했던 사람","s":"스윙스 〈매일〉 위에 얹은 평론 낭독 — 현실에선 다물지만 노래에선 해도 돼, 사장의 피로는 없는 게 아니라 풀 곳이 직원이 아닐 뿐","d":"4:28","th":"thumbs/매일.jpg"},{"c":"음악","n":13,"u":"곡","t":"손절이 아니라 거리 조절","s":"이문세 〈옛사랑〉 위에 얹은 낭독 — 관계의 해법은 단절이 아니라 거리 조절이다","d":"4:45","th":"thumbs/거리조절.jpg"},{"c":"음악","n":14,"u":"곡","t":"세 개의 시간, 하나의 숨결","s":"브라운아이드소울 〈그대의 밤, 나의 아침〉 위에 얹은 낭독 — 아직 만나지 못한 당신에게 미리 쓰는 편지","d":"4:30","th":"thumbs/세개의시간.jpg"},{"c":"음악","n":15,"u":"곡","t":"내려놓음","s":"Commodores 〈Easy〉 위에 얹은 낭독 — 애씀 없이 살기 위해 얼마나 애썼는지, 그 애씀을 못 보는 사람들에게","d":"4:16","th":"thumbs/내려놓음.jpg"},{"c":"음악","n":16,"u":"곡","t":"난 여전해","s":"The Quiett 〈Stay Alive〉 비트에 얹은 낭독 — 욕망과 소망과 희망을 내어주고 실망과 절망을 받으면, 열망이 생긴다","d":"3:58","th":"thumbs/난여전해.jpg"},{"c":"음악","n":17,"u":"곡","t":"교대 없는 불침번","s":"나플라 〈서울〉 비트에 얹은 낭독 — 내가 따뜻한 차에 타기 전에, 아버지는 먼저 차가운 차에 들어가 있었다","d":"3:32","th":"thumbs/불침번.jpg"},{"c":"음악","n":18,"u":"곡","t":"앞만 보고 가다보니","s":"The Quiett 〈My Last Song〉 위에 얹은 낭독 — 나를 믿지 말고, 내 행동을 따라 해본 당신을 믿으십시오","d":"4:45","th":"thumbs/앞만보고.jpg"},{"c":"음악","n":19,"u":"곡","t":"소중한 것","s":"정말 소중한 것은 늘 같은 자리에 있었다","d":"4:15","th":"thumbs/소중한것.jpg"},{"c":"행동 아카이브","n":1,"u":"편","t":"오타니도 못 치는 4할, 당신은 왜 매일 치려고 하나요?","s":"스포츠 · 오타니 쇼헤이","d":"3:54","th":"thumbs/아카이브-오타니.jpg"},{"c":"행동 아카이브","n":2,"u":"편","t":"눈 떠보니 아내와 아이 둘이 생겼다","s":"영화 · 패밀리맨","d":"2:42","th":"thumbs/아카이브-패밀리맨.jpg"},{"c":"행동 아카이브","n":3,"u":"편","t":"엘든링 첫 보스는 사실 잡으라고 만든 게 아니다","s":"게임 · 엘든 링","d":"2:40","th":"thumbs/아카이브-엘든링.jpg"},{"c":"행동 아카이브","n":4,"u":"편","t":"시계가 끝내는 경기인가, 내가 끝내야 끝나는 경기인가","s":"스포츠 · 시간과 점수","d":"5:12","th":"thumbs/아카이브-시계와점수.jpg"},{"c":"행동 아카이브","n":5,"u":"편","t":"의지를 키우려 하지 말고 의지가 필요 없게 만들어라","s":"몸 · 런닝과 호르몬","d":"2:54","th":"thumbs/아카이브-런닝과호르몬.jpg","src":"https://pub-e30602c3de2646f8999fe70d9efe059f.r2.dev/%EA%B0%95%EC%9D%98%EC%8B%A4/%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C__%EB%A1%B1%ED%8F%BC_S8_%EB%9F%B0%EB%8B%9D%EA%B3%BC%ED%98%B8%EB%A5%B4%EB%AA%AC_%EB%A1%B1%ED%8F%BC_%EB%82%B4%EB%B6%80%ED%85%8C%EC%8A%A4%ED%8A%B8_261104.mp4"},{"c":"행동 아카이브","n":6,"u":"편","t":"엣지 오브 투모로우, 죽어야만 다시 시작하는 사람","s":"영화 · 엣지 오브 투모로우","d":"2:18","th":"thumbs/아카이브-엣지오브투모로우.jpg"},{"c":"행동 아카이브","n":7,"u":"편","t":"오픈월드","s":"게임 · 오픈월드","d":"5:40","th":"thumbs/아카이브-오픈월드.jpg"},{"c":"행동 아카이브","n":8,"u":"편","t":"시간을 달리는 소녀, 되돌릴 수 있으면 행복할까","s":"영화 · 시간을 달리는 소녀","d":"2:00","th":"thumbs/아카이브-시간을달리는소녀.jpg"},{"c":"행동 아카이브","n":9,"u":"편","t":"페르소나 5, 사람마다 자기만의 성이 있다","s":"게임 · 페르소나 5","d":"1:22","th":"thumbs/아카이브-페르소나5.jpg"},{"c":"행동 아카이브","n":10,"u":"편","t":"데스 스트랜딩, 혼자 걷지만 혼자가 아니다","s":"게임 · 데스 스트랜딩","d":"1:26","th":"thumbs/아카이브-데스스트랜딩.jpg"},{"c":"행동 아카이브","n":11,"u":"편","t":"레드 데드 리뎀션 2, 죽어 가는 사람을 플레이하다","s":"게임 · 레드 데드 리뎀션 2","d":"1:21","th":"thumbs/아카이브-레데리2.jpg"},{"c":"행동 아카이브","n":12,"u":"편","t":"바이오하자드 2, 같은 경찰서를 다시 걸으면","s":"게임 · 바이오하자드 2","d":"2:38","th":"thumbs/아카이브-바하2경찰서.jpg"},{"c":"행동 아카이브","n":13,"u":"편","t":"바이오하자드 2, 좀비는 사람 얼굴을 한 재난이다","s":"게임 · 바이오하자드 2","d":"2:34","th":"thumbs/아카이브-바하2재난.jpg"},{"c":"행동 아카이브","n":14,"u":"편","t":"GTA5 마이클은 왜 정신과에 다닐까","s":"게임 · GTA5","d":"2:45","th":"thumbs/아카이브-GTA5.jpg"},{"c":"학습만화","n":3,"u":"편","t":"걸어봐야 땅이 보인다","s":"밀도·거리·동선을 직접 걸으며 하나로 연결해서 본다.","d":"0:54","th":"thumbs/만화_3.jpg"},{"c":"학습만화","n":16,"u":"편","t":"이름은 상징이다","s":"이름은 사람의 반응을 바꾸고, 열등감은 같은 말을 다르게 듣게 한다.","d":"1:00","th":"thumbs/만화_16.jpg"},{"c":"학습만화","n":11,"u":"편","t":"수요 없는 공급","s":"좋은 제품보다 먼저, 그곳에서 그 물건이 어떻게 쓰이는지를 본다.","d":"1:04","th":"thumbs/만화_11.jpg"},{"c":"학습만화","n":19,"u":"편","t":"윗단계를 알아야 맛이 보인다","s":"윗단계를 알아야 지금 먹는 것의 맛이 보이고, 하나를 잘하면 다른 것으로 이어진다.","d":"1:00","th":"thumbs/만화_19.jpg"},{"c":"학습만화","n":29,"u":"편","t":"자리의 예의","s":"그 자리에는 그 자리의 예의가 있다. 그 자리에 맞게 먹고, 맞게 이야기한다.","d":"0:35","th":"thumbs/만화_29.jpg"},{"c":"학습만화","n":28,"u":"편","t":"어쩌라고, 다 감자다","s":"안에서는 다 다르지만, 밖에서는 이미지 하나로 기억된다.","d":"0:58","th":"thumbs/만화_28.jpg"},{"c":"학습만화","n":22,"u":"편","t":"원산지보다 수입업체를 보라","s":"원산지 이름보다, 그 물건을 고르고 들여오는 사람의 기준을 본다.","d":"1:01","th":"thumbs/만화_22.jpg"},{"c":"학습만화","n":12,"u":"편","t":"단골의 역설","s":"대접은 요구해서 받는 것이 아니라, 상대의 고민을 알아봐 줄 때 돌아온다.","d":"1:14","th":"thumbs/만화_12.jpg"},{"c":"학습만화","n":26,"u":"편","t":"줄은 안 서도 현상은 알아야","s":"줄은 서지 않아도 현상은 안다. 알아야 대화가 짧아진다.","d":"0:49","th":"thumbs/만화_26.jpg"},{"c":"학습만화","n":9,"u":"편","t":"기술의 제약이 문법이 된다","s":"한계를 감추려던 장치가, 시간이 지나 그 작품만의 문법이 된다.","d":"1:15","th":"thumbs/만화_9.jpg"},{"c":"학습만화","n":8,"u":"편","t":"좀비학","s":"누구 잘못도 아닌 일은 재난처럼 처리하고, 다음 방으로 간다.","d":"1:00","th":"thumbs/만화_8.jpg"},{"c":"학습만화","n":2,"u":"편","t":"메인 퀘스트와 서브 퀘스트","s":"모든 문제를 메인 퀘스트처럼 붙잡지 않는다. 오늘 할 행동까지만, 기준을 갖고.","d":"1:10","th":"thumbs/만화_2.jpg"},{"c":"학습만화","n":15,"u":"편","t":"기기마다 역할을 나눈다","s":"같은 AI라도 입력하는 기기를 나누면, 기기마다 생각의 모드가 생긴다.","d":"1:08","th":"thumbs/만화_15.jpg"},{"c":"학습만화","n":20,"u":"편","t":"바꾸기 어려워도 가치가 있으면 한다","s":"바꾸기 어려운지가 아니라, 바꿀 가치가 있는지를 먼저 묻는다.","d":"0:54","th":"thumbs/만화_20.jpg"},{"c":"학습만화","n":5,"u":"편","t":"못하는 강의에서 더 배운다","s":"비슷한 강의는 확인, 못하는 강의는 배움. 공감은 재미를 주고, 정보량은 다른 데서 온다.","d":"1:19","th":"thumbs/만화_5.jpg"},{"c":"학습만화","n":17,"u":"편","t":"의견이 틀린 거지 내가 틀린 게 아니다","s":"의견과 나를 분리하면, 모든 지적이 정보가 된다.","d":"1:01","th":"thumbs/만화_17.jpg"},{"c":"학습만화","n":21,"u":"편","t":"말을 알아듣는 것도 독해다","s":"말을 알아듣는 힘은 맥락에서 나오고, 맥락은 많이 읽고 보고 겪을수록 자란다.","d":"0:54","th":"thumbs/만화_21.jpg"},{"c":"학습만화","n":14,"u":"편","t":"증명하려는 소비는 자유를 줄인다","s":"증명하려는 소비는 자유를 줄이고, 과정 없는 돈은 재미를 지운다.","d":"1:24","th":"thumbs/만화_14.jpg"},{"c":"학습만화","n":31,"u":"편","t":"출산의 비가역성","s":"되돌릴 수 없는 경험은, 이전의 저울로 잴 수 없다.","d":"1:05","th":"thumbs/만화_31.jpg"},{"c":"학습만화","n":30,"u":"편","t":"아이언돔","s":"결혼은 둘만의 일이 아니라 그 너머까지다. 내 사람을 지키는 방패는 남편이 든다.","d":"1:08","th":"thumbs/만화_30.jpg"},{"c":"학습만화","n":24,"u":"편","t":"모두를 만족시킬 수는 없다","s":"모두를 만족시키려는 선택은 아무것도 고르지 못한다. 버려 본 사람이 균형을 잡는다.","d":"0:58","th":"thumbs/만화_24.jpg"},{"c":"학습만화","n":13,"u":"편","t":"어항은 내가 깨야 한다","s":"어항은 아무도 깨 주지 않는다. 저 너머에 뭔가 있다는 걸 아는 사람이 먼저 깬다.","d":"1:13","th":"thumbs/만화_13.jpg"},{"c":"학습만화","n":6,"u":"편","t":"상체는 빠르고, 하체는 어렵다","s":"보여주는 운동 말고 나를 위한 운동. 하체부터, 꾸준히.","d":"1:00","th":"thumbs/만화_6.jpg"},{"c":"학습만화","n":7,"u":"편","t":"힘이 남아서 일한다","s":"체력은 일하려고 짜내는 힘이 아니라, 남아서 일하게 만드는 힘이다.","d":"1:27","th":"thumbs/만화_7.jpg"},{"c":"학습만화","n":27,"u":"편","t":"무게가 없어도 500개","s":"무게가 없어도 횟수가 무게가 된다. 그때 가서 하면 늦다.","d":"1:01","th":"thumbs/만화_27.jpg"},{"c":"학습만화","n":25,"u":"편","t":"보여주는 능력","s":"잘하는 것일수록 보여주기 귀찮다. 불이 붙었을 때 장작을 넣는 것도 실력이다.","d":"1:01","th":"thumbs/만화_25.jpg"},{"c":"학습만화","n":23,"u":"편","t":"숫자 너머, 우상향","s":"숫자는 끝이 있지만, 추구하는 방향은 끝이 없다. 그래서 재밌다.","d":"0:56","th":"thumbs/만화_23.jpg"},{"c":"학습만화","n":4,"u":"편","t":"마음은 늦게 도착한다","s":"마음은 늦게 도착한다. 반응이 없어도 흐름을 길게 보고 계속한다.","d":"1:07","th":"thumbs/만화_4.jpg"},{"c":"학습만화","n":10,"u":"편","t":"리더는 불안을 전가하지 않는다","s":"불안해도 불안을 넘기지 않는다. 리더가 건네는 것은 안정감이다.","d":"1:17","th":"thumbs/만화_10.jpg"},{"c":"학습만화","n":18,"u":"편","t":"술자리의 관절","s":"술자리의 중심은 가장 많이 말하는 사람이 아니라, 조절하는 사람이다.","d":"1:03","th":"thumbs/만화_18.jpg"},{"c":"학습만화","n":1,"u":"편","t":"왼손에 담긴 배려","s":"확신은, 배려한 흔적을 먼저 보여준 다음에 말한다.","d":"1:46","th":"thumbs/만화_1.jpg"}];
+(function(){
+  var LOCK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1zm2 0h6V7a3 3 0 0 0-6 0v3z"/></svg>';
+  var PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  var CHS=['행동주의자','마케팅주의자','음악','행동 아카이브','학습만화'];
+  var SHOW=8;
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+  var tabs=document.getElementById('clsTabs'), grid=document.getElementById('clsGrid'), count=document.getElementById('clsCount');
+  var modal=document.getElementById('clsModal'), body=document.getElementById('clsModalBody'), lastFocus=null;
+  var label=function(d){return d.n+d.u+' · '+d.t;};
+
+  CHS.forEach(function(ch,i){
+    var n=CLASS.filter(function(d){return d.c===ch;}).length;
+    var b=document.createElement('button');
+    b.type='button';b.className='cls-tab';b.setAttribute('role','tab');
+    b.setAttribute('aria-selected',i===0?'true':'false');
+    b.innerHTML=esc(ch)+'<i>'+n+'</i>';
+    b.onclick=function(){
+      [].forEach.call(tabs.children,function(x){x.setAttribute('aria-selected','false');});
+      b.setAttribute('aria-selected','true');render(ch);
+    };
+    tabs.appendChild(b);
+  });
+
+  function render(ch){
+    var list=CLASS.filter(function(d){return d.c===ch;})
+      .sort(function(a,b){return (b.src?1:0)-(a.src?1:0)||a.n-b.n;});
+    var open=list.filter(function(d){return d.src;}).length;
+    count.textContent=ch+' '+list.length+(list[0]?list[0].u:'')+(open?' · '+open+'편 공개':' · 전부 잠김');
+    var html='';
+    list.slice(0,SHOW).forEach(function(d){
+      var i=CLASS.indexOf(d);
+      if(d.src){
+        html+='<button type="button" class="cc open" data-i="'+i+'" aria-label="'+esc(label(d))+' 재생"><span class="th"><img loading="lazy" src="'+esc(d.th)+'" alt=""><span class="badge">외부 공개</span><span class="play">'+PLAY+'</span><span class="dur">'+esc(d.d)+'</span></span><span class="ct"><b>'+esc(label(d))+'</b><small>'+esc(d.s)+'</small></span></button>';
+      }else{
+        html+='<button type="button" class="cc locked" data-i="'+i+'" aria-label="'+esc(label(d))+' (멤버 전용)"><span class="th"><img loading="lazy" src="'+esc(d.th)+'" alt=""><span class="lk">'+LOCK+'<span>멤버 전용</span></span><span class="dur">'+esc(d.d)+'</span></span><span class="ct"><b>'+esc(label(d))+'</b><small>'+esc(d.s)+'</small></span></button>';
+      }
+    });
+    var rest=list.length-SHOW;
+    if(rest>0){
+      html+='<button type="button" class="cc rest" data-rest="'+rest+'" aria-label="나머지 '+rest+'편 (멤버 전용)"><span class="th">'+LOCK+'<strong>+'+rest+'편 더</strong></span><span class="ct"><b>멤버 전용</b><small>'+esc(ch)+' 전체 보기</small></span></button>';
+    }
+    grid.innerHTML=html;
+  }
+
+  function show(inner){
+    lastFocus=document.activeElement;
+    body.innerHTML=inner;modal.hidden=false;document.body.style.overflow='hidden';
+    modal.querySelector('.cls-x').focus();
+  }
+  function close(){
+    var v=body.querySelector('video');if(v){v.pause();v.removeAttribute('src');v.load();}
+    modal.hidden=true;body.innerHTML='';document.body.style.overflow='';
+    if(lastFocus)lastFocus.focus();
+  }
+  grid.addEventListener('click',function(e){
+    var c=e.target.closest('.cc');if(!c)return;
+    if(c.dataset.rest){
+      show('<div class="cls-lock">'+LOCK+'<h3 id="clsModalTitle">멤버 전용 강의입니다</h3><p class="t">나머지 '+esc(c.dataset.rest)+'편</p><p>멤버가 되면 강의 95편과 쇼츠 75편을 모두 볼 수 있습니다.</p><a class="btn btn-primary" href="#cta" data-close>멤버 문의하기</a></div>');
+      return;
+    }
+    var d=CLASS[+c.dataset.i];
+    if(d.src){
+      show('<video controls autoplay playsinline src="'+esc(d.src)+'" poster="'+esc(d.th)+'"></video><div class="cap"><b id="clsModalTitle">'+esc(label(d))+'</b>'+esc(d.c)+' · '+esc(d.s)+'</div>');
+    }else{
+      show('<div class="cls-lock">'+LOCK+'<h3 id="clsModalTitle">멤버 전용 강의입니다</h3><p class="t">'+esc(d.c)+' '+esc(label(d))+'</p><p>멤버가 되면 강의 95편과 쇼츠 75편을 모두 볼 수 있습니다.</p><a class="btn btn-primary" href="#cta" data-close>멤버 문의하기</a></div>');
+    }
+  });
+  modal.addEventListener('click',function(e){
+    if(e.target===modal||e.target.closest('[data-close]'))close();
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)close();});
+  render(CHS[0]);
+})();
+</script>
 </body>
 </html>
